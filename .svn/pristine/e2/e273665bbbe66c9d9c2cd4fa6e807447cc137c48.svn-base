@@ -1,0 +1,167 @@
+[woss_server] -2016-10-12 23:14:07,068   -------gather模块读取文件
+[woss_server] -2016-10-12 23:14:07,068   -------gather模块获取文件记录的位置
+[woss_server] -2016-10-12 23:14:07,068   -------gather模块读取未匹配的数据的文件
+[woss_server] -2016-10-12 23:14:07,105   -------上次未匹配有506组数据
+[woss_server] -2016-10-12 23:14:07,105   -------本次次未匹配有506组数据
+[woss_server] -2016-10-12 23:14:07,105   -------gather模块把未匹配的存入文件
+[woss_server] -2016-10-12 23:14:07,136   -------gather模块把index放入文件中
+[woss_server] -2016-10-12 23:14:07,136   -------发送0条数据到Server端
+[woss_server] -2016-10-12 23:14:07,136   -------新建线程
+[woss_server] -2016-10-12 23:14:07,151   -------启动线程
+[woss_server] -2016-10-12 23:14:07,151   -------把连接传给DBStore
+[woss_gather] -2016-10-13 09:00:01,556   -------gather模块读取文件
+[woss_gather] -2016-10-13 09:00:01,556   -------gather模块获取文件记录的位置
+[woss_gather] -2016-10-13 09:00:01,556   -------gather模块读取未匹配的数据的文件
+[woss_gather] -2016-10-13 09:00:01,603   -------上次未匹配有506组数据
+[woss_gather] -2016-10-13 09:00:01,603   -------本次次未匹配有506组数据
+[woss_gather] -2016-10-13 09:00:01,603   -------gather模块把未匹配的存入文件
+[woss_gather] -2016-10-13 09:00:01,656   -------gather模块把index放入文件中
+[woss_gather] -2016-10-13 09:00:01,656   -------发送0条数据到Server端
+2016-10-13 09:02:14  [ main:0 ] - [ INFO ]  gather模块读取文件
+ 2016-10-13 09:02:14  [ main:2 ] - [ INFO ]  gather模块获取文件记录的位置
+ 2016-10-13 09:02:14  [ main:3 ] - [ INFO ]  gather模块读取未匹配的数据的文件
+ 2016-10-13 09:02:14  [ main:55 ] - [ INFO ]  上次未匹配有506组数据
+ 2016-10-13 09:02:14  [ main:56 ] - [ INFO ]  本次次未匹配有506组数据
+ 2016-10-13 09:02:14  [ main:56 ] - [ INFO ]  gather模块把未匹配的存入文件
+ 2016-10-13 09:02:14  [ main:108 ] - [ INFO ]  gather模块把index放入文件中
+ 2016-10-13 09:02:14  [ main:110 ] - [ INFO ]  发送0条数据到Server端
+ 2016-10-13 09:04:06  [main:0] - [ INFO ]  gather模块读取文件
+ 2016-10-13 09:04:06  [main:0] - [ INFO ]  gather模块获取文件记录的位置
+ 2016-10-13 09:04:06  [main:0] - [ INFO ]  gather模块读取未匹配的数据的文件
+ 2016-10-13 09:04:06  [main:32] - [ INFO ]  上次未匹配有506组数据
+ 2016-10-13 09:04:06  [main:32] - [ INFO ]  本次次未匹配有506组数据
+ 2016-10-13 09:04:06  [main:32] - [ INFO ]  gather模块把未匹配的存入文件
+ 2016-10-13 09:04:06  [main:69] - [ INFO ]  gather模块把index放入文件中
+ 2016-10-13 09:04:06  [main:69] - [ INFO ]  发送0条数据到Server端
+ 2016-10-13 09:04:45  [main:0] - [ INFO ]  gather模块读取文件
+ 2016-10-13 09:04:45  [main:0] - [ INFO ]  gather模块获取文件记录的位置
+ 2016-10-13 09:04:45  [main:0] - [ INFO ]  gather模块读取未匹配的数据的文件
+ 2016-10-13 09:04:45  [main:47] - [ INFO ]  上次未匹配有506组数据
+ 2016-10-13 09:04:45  [main:47] - [ INFO ]  本次次未匹配有506组数据
+ 2016-10-13 09:04:45  [main:47] - [ INFO ]  gather模块把未匹配的存入文件
+ 2016-10-13 09:04:45  [main:85] - [ INFO ]  gather模块把index放入文件中
+ 2016-10-13 09:04:45  [main:85] - [ INFO ]  发送0条数据到Server端
+ 2016-10-13 09:05:56  [main:0] - [ INFO ]  gather模块读取文件
+ 2016-10-13 09:05:56  [main:0] - [ INFO ]  gather模块获取文件记录的位置
+ 2016-10-13 09:05:56  [main:0] - [ INFO ]  gather模块读取未匹配的数据的文件
+ 2016-10-13 09:05:56  [main:31] - [ INFO ]  上次未匹配有506组数据
+ 2016-10-13 09:05:56  [main:31] - [ INFO ]  本次次未匹配有506组数据
+ 2016-10-13 09:05:56  [main:31] - [ INFO ]  gather模块把未匹配的存入文件
+ 2016-10-13 09:05:56  [main:62] - [ INFO ]  gather模块把index放入文件中
+ 2016-10-13 09:05:56  [main:62] - [ INFO ]  发送0条数据到Server端
+ 2016-10-13 09:07:30  [main:0] - [ INFO ]  gather模块读取文件
+ 2016-10-13 09:07:30  [main:0] - [ INFO ]  gather模块获取文件记录的位置
+ 2016-10-13 09:07:30  [main:0] - [ INFO ]  gather模块读取未匹配的数据的文件
+ 2016-10-13 09:07:30  [main:46] - [ INFO ]  上次未匹配有506组数据
+ 2016-10-13 09:07:30  [main:46] - [ INFO ]  本次次未匹配有506组数据
+ 2016-10-13 09:07:30  [main:46] - [ INFO ]  gather模块把未匹配的存入文件
+ 2016-10-13 09:07:30  [main:115] - [ INFO ]  gather模块把index放入文件中
+ 2016-10-13 09:07:30  [main:131] - [ INFO ]  发送0条数据到Server端
+ 2016-10-13 09:08:34  [main:0] - [ INFO ]  gather模块读取文件
+ 2016-10-13 09:08:34  [main:0] - [ INFO ]  gather模块获取文件记录的位置
+ 2016-10-13 09:08:34  [main:0] - [ INFO ]  gather模块读取未匹配的数据的文件
+ 2016-10-13 09:08:34  [main:44] - [ INFO ]  上次未匹配有506组数据
+ 2016-10-13 09:08:34  [main:44] - [ INFO ]  本次次未匹配有506组数据
+ 2016-10-13 09:08:34  [main:44] - [ INFO ]  gather模块把未匹配的存入文件
+ 2016-10-13 09:08:34  [main:98] - [ INFO ]  gather模块把index放入文件中
+ 2016-10-13 09:08:34  [main:100] - [ INFO ]  发送0条数据到Server端
+ 2016-10-13 09:09:06  [main:0] - [ INFO ]  gather模块读取文件
+ 2016-10-13 09:09:06  [main:2] - [ INFO ]  gather模块获取文件记录的位置
+ 2016-10-13 09:09:06  [main:3] - [ INFO ]  gather模块读取未匹配的数据的文件
+ 2016-10-13 09:09:06  [main:27] - [ INFO ]  上次未匹配有506组数据
+ 2016-10-13 09:09:06  [main:27] - [ INFO ]  本次次未匹配有506组数据
+ 2016-10-13 09:09:06  [main:27] - [ INFO ]  gather模块把未匹配的存入文件
+ 2016-10-13 09:09:06  [main:74] - [ INFO ]  gather模块把index放入文件中
+ 2016-10-13 09:09:06  [main:74] - [ DEBUG ]  发送0条数据到Server端
+ 2016-10-13 09:10:15  [gatherLogger:0] - [ INFO ]  gather模块读取文件
+ 2016-10-13 09:10:15  [gatherLogger:0] - [ INFO ]  gather模块获取文件记录的位置
+ 2016-10-13 09:10:15  [gatherLogger:0] - [ INFO ]  gather模块读取未匹配的数据的文件
+ 2016-10-13 09:10:15  [gatherLogger:53] - [ INFO ]  上次未匹配有506组数据
+ 2016-10-13 09:10:15  [gatherLogger:53] - [ INFO ]  本次次未匹配有506组数据
+ 2016-10-13 09:10:15  [gatherLogger:53] - [ INFO ]  gather模块把未匹配的存入文件
+ 2016-10-13 09:10:15  [gatherLogger:85] - [ INFO ]  gather模块把index放入文件中
+ 2016-10-13 09:10:15  [clientLogger:85] - [ DEBUG ]  发送0条数据到Server端
+ 2016-10-13 09:12:38 [gatherLogger] - [INFO]--gather模块读取文件
+ 2016-10-13 09:12:38 [gatherLogger] - [INFO]--gather模块获取文件记录的位置
+ 2016-10-13 09:12:38 [gatherLogger] - [INFO]--gather模块读取未匹配的数据的文件
+ 2016-10-13 09:12:38 [gatherLogger] - [INFO]--上次未匹配有506组数据
+ 2016-10-13 09:12:38 [gatherLogger] - [INFO]--本次次未匹配有506组数据
+ 2016-10-13 09:12:38 [gatherLogger] - [INFO]--gather模块把未匹配的存入文件
+ 2016-10-13 09:12:38 [gatherLogger] - [INFO]--gather模块把index放入文件中
+ 2016-10-13 09:12:38 [clientLogger] - [DEBUG]--发送0条数据到Server端
+ 2016-10-13 09:15:00 [gatherLogger] - [INFO]--gather模块读取文件
+ 2016-10-13 09:15:00 [gatherLogger] - [INFO]--gather模块获取文件记录的位置
+ 2016-10-13 09:15:00 [gatherLogger] - [INFO]--gather模块读取未匹配的数据的文件
+ 2016-10-13 09:15:00 [gatherLogger] - [INFO]--上次未匹配有506组数据
+ 2016-10-13 09:15:00 [gatherLogger] - [INFO]--本次次未匹配有506组数据
+ 2016-10-13 09:15:00 [gatherLogger] - [INFO]--gather模块把未匹配的存入文件
+ 2016-10-13 09:15:00 [gatherLogger] - [INFO]--gather模块把index放入文件中
+ 2016-10-13 09:15:00 [clientLogger] - [DEBUG]--发送0条数据到Server端
+ 2016-10-13 09:16:27 [gatherLogger] - [INFO]--gather模块读取文件
+ 2016-10-13 09:16:27 [gatherLogger] - [INFO]--gather模块获取文件记录的位置
+ 2016-10-13 09:16:27 [gatherLogger] - [INFO]--gather模块读取未匹配的数据的文件
+ 2016-10-13 09:16:27 [gatherLogger] - [INFO]--上次未匹配有506组数据
+ 2016-10-13 09:16:27 [gatherLogger] - [INFO]--本次次未匹配有506组数据
+ 2016-10-13 09:16:27 [gatherLogger] - [INFO]--gather模块把未匹配的存入文件
+ 2016-10-13 09:16:27 [gatherLogger] - [INFO]--gather模块把index放入文件中
+ 2016-10-13 09:16:27 [gatherLogger] - [DEBUG]--发送0条数据到Server端
+ 2016-10-13 09:16:49 [gatherLogger] - [INFO]--gather模块读取文件
+ 2016-10-13 09:16:49 [gatherLogger] - [INFO]--gather模块获取文件记录的位置
+ 2016-10-13 09:16:49 [gatherLogger] - [INFO]--gather模块读取未匹配的数据的文件
+ 2016-10-13 09:16:49 [gatherLogger] - [INFO]--上次未匹配有506组数据
+ 2016-10-13 09:16:49 [gatherLogger] - [INFO]--本次次未匹配有506组数据
+ 2016-10-13 09:16:49 [gatherLogger] - [INFO]--gather模块把未匹配的存入文件
+ 2016-10-13 09:16:49 [gatherLogger] - [INFO]--gather模块把index放入文件中
+ 2016-10-13 09:16:49 [Client] - [DEBUG]--发送0条数据到Server端
+ 2016-10-13 09:21:34 [Gather] - [INFO]--gather模块读取文件
+ 2016-10-13 09:21:34 [Gather] - [INFO]--gather模块获取文件记录的位置
+ 2016-10-13 09:21:34 [Gather] - [INFO]--gather模块读取未匹配的数据的文件
+ 2016-10-13 09:21:34 [Gather] - [INFO]--上次未匹配有506组数据
+ 2016-10-13 09:21:34 [Gather] - [INFO]--本次次未匹配有506组数据
+ 2016-10-13 09:21:34 [Gather] - [INFO]--gather模块把未匹配的存入文件
+ 2016-10-13 09:21:34 [Gather] - [INFO]--gather模块把index放入文件中
+ 2016-10-13 09:21:34 [Client] - [DEBUG]--发送0条数据到Server端
+ 2016-10-13 09:27:40 [serverLogger] - [INFO]--创建socket
+ 2016-10-13 09:27:40 [serverLogger] - [INFO]--创建连接池
+ 2016-10-13 09:27:40 [ConnPool] - [INFO]--把连接传给DBStore
+ 2016-10-13 09:31:37 [serverLogger] - [INFO]--创建socket
+ 2016-10-13 09:31:37 [serverLogger] - [INFO]--创建连接池
+ 2016-10-13 09:31:37 [ConnPool] - [INFO]--把连接传给DBStore
+ 2016-10-13 09:32:41 [Server] - [INFO]--创建socket
+ 2016-10-13 09:32:41 [Server] - [INFO]--创建连接池
+ 2016-10-13 09:32:41 [ConnPool] - [INFO]--把连接传给DBStore
+ 2016-10-13 09:36:47 [Server] - [INFO]--创建socket
+ 2016-10-13 09:36:47 [Server] - [INFO]--创建连接池
+ 2016-10-13 09:36:47 [ConnPool] - [INFO]--把连接传给DBStore
+ 2016-10-13 09:36:51 [Gather] - [INFO]--gather模块读取文件
+ 2016-10-13 09:36:51 [Gather] - [INFO]--gather模块获取文件记录的位置
+ 2016-10-13 09:36:51 [Gather] - [INFO]--gather模块读取未匹配的数据的文件
+ 2016-10-13 09:36:51 [Gather] - [INFO]--上次未匹配有506组数据
+ 2016-10-13 09:36:51 [Gather] - [INFO]--本次次未匹配有506组数据
+ 2016-10-13 09:36:51 [Gather] - [INFO]--gather模块把未匹配的存入文件
+ 2016-10-13 09:36:51 [Gather] - [INFO]--gather模块把index放入文件中
+ 2016-10-13 09:36:51 [Client] - [DEBUG]--发送0条数据到Server端
+ 2016-10-13 09:36:51 [ConnPool] - [INFO]--新建线程
+ 2016-10-13 09:36:51 [ConnPool] - [INFO]--启动线程
+ 2016-10-13 09:36:51 [ConnPool] - [INFO]--小于初始化连接，释放连接
+ 2016-10-13 09:36:51 [ConnPool] - [INFO]--把连接传给DBStore
+ 2016-10-13 09:46:17 [Server] - [INFO]--创建socket
+ 2016-10-13 09:46:17 [Server] - [INFO]--创建连接池
+ 2016-10-13 09:46:17 [ConnPool] - [INFO]--把连接传给DBStore
+ 2016-10-13 09:46:21 [Gather] - [INFO]--gather模块读取文件
+ 2016-10-13 09:46:21 [Gather] - [INFO]--gather模块获取文件记录的位置
+ 2016-10-13 09:46:21 [Gather] - [INFO]--gather模块读取未匹配的数据的文件
+ 2016-10-13 09:46:21 [Gather] - [INFO]--上次未匹配有506组数据
+ 2016-10-13 09:46:21 [Gather] - [INFO]--本次次未匹配有506组数据
+ 2016-10-13 09:46:21 [Gather] - [INFO]--gather模块把未匹配的存入文件
+ 2016-10-13 09:46:21 [Gather] - [INFO]--gather模块把index放入文件中
+ 2016-10-13 09:46:21 [Client] - [DEBUG]--发送0条数据到Server端
+ 2016-10-13 09:46:22 [ConnPool] - [INFO]--新建线程
+ 2016-10-13 09:46:22 [ConnPool] - [INFO]--启动线程
+ 2016-10-13 09:46:22 [ConnPool] - [INFO]--小于初始化连接，释放连接
+ 2016-10-13 09:46:22 [ConnPool] - [INFO]--把连接传给DBStore
+ 2016-10-13 09:46:22 [DBStore] - [INFO]--入库开始
+ 2016-10-13 09:46:22 [DBStore] - [INFO]--判断当前日期
+ 2016-10-13 09:46:22 [DBStore] - [INFO]--设置SQL语句
+ 2016-10-13 09:46:22 [DBStore] - [INFO]--获取异常的数(如果需要发生异常)
+ 

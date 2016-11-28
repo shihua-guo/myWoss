@@ -1,0 +1,22 @@
+log4j.rootLogger = info,console,file
+log4j.appender.console = org.apache.log4j.ConsoleAppender
+log4j.appender.console.layout = org.apache.log4j.SimpleLayout
+log4j.appender.console.layout.ConversionPattern=[woss_gather] -%d   -------%m%n
+log4j.appender.file = org.apache.log4j.FileAppender
+log4j.appender.file.File = src/com/briup/file/log.txt
+log4j.appender.file.Append = true
+log4j.appender.file.layout = org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=[woss_gather] -%d   -------%m%n
+
+
+
+
+
+
+
+
+
+
+
+
+

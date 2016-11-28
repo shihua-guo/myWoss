@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<woss>
+	<logger class="com.briup.util.LoggerImpl">
+		<logPath>src/com/briup/file/log4j.properties</logPath>
+	</logger>
+	<gather class="com.briup.client.GatherImpl5">
+		<nas-ip>127.0.0.1</nas-ip>
+		<src-file>src/com/briup/file/radwtmp5</src-file>
+		<failFile>src/com/briup/client/FailMap</failFile>
+		<indexFile>src/com/briup/client/index</indexFile>
+		<logName>Gather</logName>
+	</gather>
+	
+	<client class="com.briup.client.ClientImpl">
+		<ip>127.0.0.1</ip>
+		<port>8888</port>
+		<logName>Client</logName>
+	</client>
+	
+	<backup class="com.briup.util.BackUpImpl">
+		<back-temp>src/com/briup/radwtmp4</back-temp>
+		<logName>BackUp</logName>
+	</backup>
+	<dbstore class="com.briup.server.DBStoreImpl4">
+			<backUpFile>src/com/briup/file/backUpFile</backUpFile>
+			<logName>DBStore</logName>
+	</dbstore>
+	<server class="com.briup.server.ServerImpl4">
+		<port>8888</port>
+		<logName>Server</logName>
+	</server>
+	
+	
+	
+	<connpool class="com.briup.server.ConnPool">
+		<initCount>5</initCount>
+		<maxCount>50</maxCount>
+		<url>jdbc:oracle:thin:@localhost:1521:xe</url>
+		<driver>oracle.jdbc.driver.OracleDriver</driver>
+		<userName>woss</userName>
+		<passWord>root</passWord>
+		<logName>ConnPool</logName>
+	</connpool>
+	<sthread class="com.briup.server.SThread3">
+		<logName>Thread</logName>
+	</sthread>
+</woss>

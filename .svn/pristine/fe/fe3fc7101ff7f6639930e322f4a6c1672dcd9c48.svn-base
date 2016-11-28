@@ -1,0 +1,213 @@
+package com.briup.server;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.Properties;
+
+import com.briup.util.Configuration;
+import com.briup.util.ConfigurationImpl;
+import com.briup.util.Logger;
+import com.briup.util.LoggerImpl;
+import com.briup.woss.ConfigurationAWare;
+import com.briup.woss.WossModule;
+
+/**
+ * 自定义连接池, 管理连接connection 代码实现： 1. 指定全局参数： 初始化数目、最大连接数、当前连接、 连接池集合 2.
+ * 构造函数：循环创建3个连接 3. 写一个创建连接的方法 4. 获取连接 ------> 判断： 池中有连接， 直接拿 ------> 池中没有连接，
+ * ------> 判断，是否达到最大连接数； 达到，抛出异常；没有达到最大连接数， 创建新的连接 5. 释放连接 -------> 连接放回集合中(..)
+ *
+ */
+public class ConnPool implements WossModule,ConfigurationAWare {
+
+	private int initCount; // 初始化连接数目
+	private int maxCount; // 最大连接数
+	private int currentCount; // 记录当前使用连接数
+
+	// 连接
+	private String url;
+	// 驱动
+	private String driver;
+	// 用户名
+	private String userName;
+	// 密码
+	private String passWord;
+	// 日志
+	private Logger logger;
+	// 日志的名字
+	private String logName;
+	// configuration
+	private Configuration config;
+	// 连接池 （存放所有的初始化连接）
+	private LinkedList<Connection> pool = new LinkedList<Connection>();
+
+	// 初始化
+	@Override
+	public void init(Properties arg0) {
+		// 从properties中获取参数并初始化参数
+		this.initCount = Integer.parseInt(arg0.getProperty("initCount"));
+		this.maxCount = Integer.parseInt(arg0.getProperty("maxCount"));
+		this.url = arg0.getProperty("url");
+		this.driver = arg0.getProperty("driver");
+		this.userName = arg0.getProperty("userName");
+		this.passWord = arg0.getProperty("passWord");
+		this.logName = arg0.getProperty("logName");
+		// 初始化连接池
+		try {
+			Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// 初始化连接
+		for (int i = 0; i < initCount; i++) {
+			// 创建原始的连接对象
+			Connection con = createConnection();
+			// 当前连接数
+			currentCount++;
+			// 把连接加入连接池
+			pool.addLast(con);
+		}
+	}
+
+	// 2. 创建一个新的连接的方法
+	private Connection createConnection() {
+		try {
+			// 原始的目标对象
+			final Connection con = DriverManager.getConnection(url, userName, passWord);
+
+			// 对con创建其代理对象
+			Connection proxy = (Connection) Proxy.newProxyInstance(
+
+					con.getClass().getClassLoader(), // 类加载器
+					// con.getClass().getInterfaces(), // 当目标对象是一个具体的类的时候
+					new Class[] { Connection.class }, // 目标对象实现的接口
+
+					new InvocationHandler() { // 当调用con对 象方法的时候， 自动触发事务处理器
+						@Override
+						public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+							// 方法返回值
+							Object result = null;
+							// 当前执行的方法的方法名
+							String methodName = method.getName();
+
+							// 判断当执行了close方法的时候，把连接放入连接池
+							if ("close".equals(methodName)) {
+								System.out.println("begin:当前执行close方法开始！");
+								// 连接放入连接池 (判断..)
+								pool.addLast(con);
+								System.out.println("end: 当前连接已经放入连接池了！");
+							} else {
+								// 调用目标对象方法
+								result = method.invoke(con, args);
+							}
+							return result;
+						}
+					});
+			return proxy;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	// 3. 获取连接
+	public Connection getConnection() {
+		//设置日志
+		setLogger();
+		// 3.1 判断连接池中是否有连接, 如果有连接，就直接从连接池取出
+		if (pool.size() > 0) {
+			return pool.removeFirst();
+		}
+		/**
+		 * 如果把连接池中的conn都拿完了，也就是pool.size()=0. 那么就需要创建链接，并放入连接池中
+		 * 
+		 * @author alan
+		 * @date 2016-09-27 20:50:22
+		 */
+
+		// 3.2 连接池中没有连接： 判断，如果没有达到最大连接数，创建；
+		if (currentCount < maxCount) {
+			// 记录当前使用的连接数
+			currentCount++;
+			// 创建连接
+			return createConnection();
+		}
+		logger.error("当前连接已经达到最大连接数目 ！");
+		// 3.3 如果当前已经达到最大连接数，抛出异常
+		throw new RuntimeException("当前连接已经达到最大连接数目 ！");
+	}
+
+	// 4. 释放连接
+	public void releaseConnection(Connection con) {
+		// 4.1 判断： 池的数目如果小于初始化连接，就放入池中
+		if (pool.size() < initCount) {
+			logger.info("小于初始化连接，释放连接");
+			pool.addLast(con);
+		} else {
+			try {
+				logger.info("直接释放连接");
+				// 4.2 关闭
+				currentCount--;
+				con.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+		}
+	}
+	private void setLogger(){
+		try {
+			logger = config.getLogger();
+			((LoggerImpl)logger).setLogger(org.apache.log4j.Logger.getLogger(logName));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public static void main(String[] args) throws SQLException {
+		// ConnPool pool = new ConnPool();
+		ConnPool pool;
+		try {
+			pool = new ConfigurationImpl().getConnPool();
+			System.out.println("连接池初始连接数量" + pool.initCount);
+			System.out.println("当前连接: " + pool.currentCount); // 3
+
+			// 使用连接
+			pool.getConnection();
+			pool.getConnection();
+			Connection con4 = pool.getConnection();
+			Connection con3 = pool.getConnection();
+			Connection con2 = pool.getConnection();
+			Connection con1 = pool.getConnection();
+
+			// 释放连接, 连接放回连接池
+			// pool.realeaseConnection(con1);
+			/*
+			 * 希望：当关闭连接的时候，要把连接放入连接池！【当调用Connection接口的close方法时候，希望触发pool.addLast
+			 * (con);操作】 把连接放入连接池 解决1：实现Connection接口，重写close方法 解决2：动态代理
+			 */
+			con1.close();
+
+			// 再获取
+			pool.getConnection();
+			pool.releaseConnection(con1);
+			con2.close();
+			System.out.println("连接池数量：" + pool.pool.size()); // 0
+			System.out.println("当前连接: " + pool.currentCount); // 3
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void setConfiguration(Configuration arg0) {
+		// TODO Auto-generated method stub
+		this.config = arg0;
+	}
+
+}

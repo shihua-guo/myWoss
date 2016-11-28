@@ -1,0 +1,50 @@
+package com.briup.util;
+
+import java.util.Properties;
+
+import org.apache.log4j.PropertyConfigurator;
+
+import com.briup.woss.WossModule;
+
+public class LoggerImpl implements com.briup.util.Logger,WossModule {
+	private org.apache.log4j.Logger logger = 
+			org.apache.log4j.Logger.getRootLogger();
+	private String logPath;
+	@Override
+	public void init(Properties arg0) {
+		// TODO Auto-generated method stub
+		this.logPath = arg0.getProperty("logPath");
+		PropertyConfigurator.configure(logPath);
+	}
+
+	@Override
+	public void debug(String arg0) {
+		// TODO Auto-generated method stub
+		logger.debug(arg0);
+	}
+
+	@Override
+	public void error(String arg0) {
+		// TODO Auto-generated method stub
+		logger.error(arg0);
+	}
+
+	@Override
+	public void fatal(String arg0) {
+		// TODO Auto-generated method stub
+		logger.fatal(arg0);
+	}
+
+	@Override
+	public void info(String arg0) {
+		// TODO Auto-generated method stub
+		logger.info(arg0);
+	}
+
+	@Override
+	public void warn(String arg0) {
+		// TODO Auto-generated method stub
+		logger.warn(arg0);
+	}
+
+}

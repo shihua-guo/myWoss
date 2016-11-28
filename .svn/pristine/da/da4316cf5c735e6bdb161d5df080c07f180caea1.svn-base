@@ -1,0 +1,124 @@
+package com.briup.server;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Properties;
+
+import com.briup.util.BIDR;
+
+/**
+ * 添加连接池，优化，不每次new DBStore对象
+ * @author alan
+ * @date Oct 11, 2016 9:55:53 AM
+ */
+public class ServerImpl4 implements com.briup.woss.server.Server {
+
+	@Override
+	public void init(Properties arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * @return 
+	 * @date 2016-10-10 18:59:38  收集由Client端传入的BIDR集合
+	 */
+	@Override
+	public Collection<BIDR> revicer() throws Exception {
+		ServerSocket server = new ServerSocket(8888);
+		while (true) {
+			Socket client = server.accept();
+//			Thread th = new Thread(new SThread3(client));
+			System.out.println("i am a new Thread");
+//			th.start();
+			return null;
+		}
+	}
+	
+	/**
+	 * 废弃原来实现的接口方法。revicer2：阻塞不断接收客户端的信息，线程负责入库
+	 * @date 2016-10-11 10:14:572
+	 * @throws Exception
+	 */
+	public void revicer2() throws Exception {
+		//socket：接收客户端的
+		ServerSocket server = new ServerSocket(8888);
+		//连接池，初始化长度为5
+		ConnPool pool= new ConnPool();
+		while (true) {
+			Socket client = server.accept();
+			//在连接池获取连接
+			System.out.println("在连接池获取连接");
+			Connection conn = pool.getConnection();
+			//新建线程
+			System.out.println("i am a new Thread");
+			Thread th = new Thread(new SThread3(client,conn));
+			//启动线程
+			th.start();
+			//释放连接
+			pool.releaseConnection(conn);
+		}
+	}
+
+	@Override
+	public void shutdown() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void main(String[] args) {
+		try {
+			new ServerImpl4().revicer2();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+
+/**
+ * 多线程，从线程池获取连接负责入库
+ * @author alan
+ * @date Oct 11, 2016 10:06:39 AM
+ */
+class SThread3 implements Runnable{
+	private Socket client=null;
+	private Connection conn=null;
+	public SThread3(){}
+	public SThread3(Socket client,Connection conn){
+		this.client = client;
+		this.conn = conn;
+	}
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		ObjectInputStream ois = null;
+		try {
+			Collection<BIDR> bidrList = new ArrayList<BIDR>();
+			ois = new ObjectInputStream(client.getInputStream());
+			//读取客户端传来的列表
+			bidrList=(Collection<BIDR>)ois.readObject();
+			System.out.println("传过来的长度："+bidrList.size());
+			//入库
+			new DBStoreImpl4(conn).saveToDB(bidrList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				//关闭流
+				if(ois!=null)
+					ois.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+}

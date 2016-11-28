@@ -1,0 +1,83 @@
+package com.briup.server;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.Socket;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Properties;
+
+import com.briup.util.BIDR;
+import com.briup.util.Configuration;
+import com.briup.woss.ConfigurationAWare;
+import com.briup.woss.WossModule;
+
+/**
+ * 多线程，从线程池获取连接负责入库
+ * 
+ * @author alan
+ * @date Oct 11, 2016 10:06:39 AM
+ */
+public class SThread3 implements Runnable,WossModule,ConfigurationAWare {
+	private Socket client = null;
+	private Connection conn = null;
+	//config
+	private Configuration config;
+	public SThread3() {
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		ObjectInputStream ois = null;
+		try {
+			Collection<BIDR> bidrList = new ArrayList<BIDR>();
+			ois = new ObjectInputStream(getClient().getInputStream());
+			// 读取客户端传来的列表
+			bidrList = (Collection<BIDR>) ois.readObject();
+			System.out.println("传过来的长度：" + bidrList.size());
+			// 入库
+			config.getDBStore().saveToDB(bidrList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 关闭流
+				if (ois != null)
+					ois.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void setConfiguration(Configuration arg0) {
+		// TODO Auto-generated method stub
+		this.config = arg0;
+	}
+
+	@Override
+	public void init(Properties arg0) {
+		// TODO Auto-generated method stub
+	}
+
+	public Socket getClient() {
+		return client;
+	}
+
+	public void setClient(Socket client) {
+		this.client = client;
+	}
+
+	public Connection getConn() {
+		return conn;
+	}
+
+	public void setConn(Connection conn) {
+		this.conn = conn;
+	}
+
+}

@@ -1,0 +1,54 @@
+package com.briup.client;
+
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.util.Collection;
+import java.util.Properties;
+
+import com.briup.util.BIDR;
+
+/**
+ * 第一次写Client端，实现基本功能：和Server对接
+ * @author alan
+ * @date Oct 10, 2016 3:57:41 PM
+ */
+public class ClientImpl implements com.briup.woss.client.Client{
+
+	@Override
+	public void init(Properties arg0) {
+		
+	}	
+
+	@Override
+	public void send(Collection<BIDR> arg0) throws Exception {
+		System.out.println("发送的长度"+arg0.size());
+		Socket socket = new Socket("127.0.0.1", 8888);
+//		Socket socket = new Socket("172.16.3.122", 10086);
+		OutputStream os = socket.getOutputStream();
+		ObjectOutputStream oos = new ObjectOutputStream(os);
+		oos.writeObject(arg0);
+		oos.flush();
+		oos.close();
+		os.flush();
+		os.close();
+		socket.close();
+	}
+	public static void main(String[] args) {
+		GatherImpl4 g2 = new GatherImpl4();
+		ClientImpl client = new ClientImpl();
+		Long t1 = System.currentTimeMillis();
+		
+		// 测试第一轮解析
+		try {
+			client.send(g2.gather());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// g2.printBidrList();
+		Long t2 = System.currentTimeMillis();
+		System.out.println("时间" + (t2 - t1));
+		
+	}
+}

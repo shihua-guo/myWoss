@@ -1,0 +1,46 @@
+package com.briup.util;
+
+import com.briup.woss.client.Client;
+import com.briup.woss.client.Gather;
+import com.briup.woss.server.DBStore;
+import com.briup.woss.server.Server;
+
+public class ConfigurationImpl implements com.briup.util.Configuration{
+
+	@Override
+	public BackUP getBackup() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Client getClient() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DBStore getDBStore() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Gather getGather() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Logger getLogger() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Server getServer() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
